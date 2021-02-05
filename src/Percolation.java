@@ -7,7 +7,7 @@ public class Percolation {
 	private WeightedQuickUnionUF myFull;
 	private int myTop, myBottom;
 	
-	public Percolation(int size) { // create size by size grid, with all sites blocked
+	public Percolation(int size) { // create size-by-size grid, with all sites blocked
 		if (size <= 0) throw new IllegalArgumentException();
 		sites = new boolean[size][size];
 		mySize = size;
