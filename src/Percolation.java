@@ -43,6 +43,7 @@ public class Percolation {
 	 * @param j = column
 	 */
 	public void open (int i, int j) {
+		validate(i, j);
 		if (!sites[i][j]) 
 			sites[i][j] = true; // sites[i][j] is now open
 		
@@ -63,6 +64,7 @@ public class Percolation {
 	 * @return
 	 */
 	public boolean isOpen(int i, int j) {
+		if (i < 0 || j < 0 || i >= mySize || j >= mySize) return false; // handles if array would go out of bounds
 		return sites[i][j];
 	}
 	
@@ -72,9 +74,10 @@ public class Percolation {
 	 * @param j = column
 	 * @return
 	 */
-	public boolean isFull(int i, int j) { 
+	public boolean isFull(int i, int j) {
+		validate(i, j);
 		// a full site is an open site that can be connected to an open site in the top row via a chain of neighboring (left, right, up, down) sites
-		return false;
+		return myFull.connected(myTop, getIndex(i, j));
 	}
 	
 	/**
@@ -83,7 +86,16 @@ public class Percolation {
 	 */
 	public boolean percolates() {
 		// see explanation in assignment pdf file to know what percolation means
-		return false;
+		return myPerc.connected(myTop, myBottom);
+	}
+	
+	public void validate(int i, int j) {
+		if (i < 0 || i >= mySize) {
+			throw new IllegalArgumentException("open(): index " + i + " is not between 0 and " + (mySize-1));
+		}
+		else if (j < 0 || j >= mySize) {
+			throw new IllegalArgumentException("open(): index " + j + " is not between 0 and " + (mySize-1));
+		}
 	}
 }
 
