@@ -25,6 +25,7 @@ Programming Assignment 1: Percolation
  *  Describe how you implemented Percolation.java. How did you check
  *  whether the system percolates?
  *****************************************************************************/
+
 I interpret this question to mean, what method did I use to check whether a system
 percolates or not. In my percolates() method I simply returned myPerc.connected(myTop, myBottom)
 where myTop and myBottom are the virtual top and bottom respectively.
