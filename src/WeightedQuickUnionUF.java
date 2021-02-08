@@ -33,7 +33,7 @@ public class WeightedQuickUnionUF {
 
     // return true if the two elements are in the same set.
     public boolean connected(int p, int q) {
-        return find(p) == find(q);
+        return find(p) == find(q); // thanks Rachel for letting me know this way was easier, I blanked lol
     }
 
     // validate that p is a valid index
