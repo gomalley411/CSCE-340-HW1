@@ -1,6 +1,9 @@
 public class Percolation {
+<<<<<<< HEAD
 	// refer to textbook or to Prof. Wu 
 	// if help is needed, but do NOT copy
+=======
+>>>>>>> 404eb1b8efc8421fd09e86affe653aacb9b32152
 	
 	private boolean[][] sites;
 	private int mySize;
