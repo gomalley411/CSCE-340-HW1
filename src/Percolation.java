@@ -51,7 +51,7 @@ public class Percolation {
 		int index = getIndex(i, j);
 		
 		// if opening top row, connect to virtual top
-		if (i == 1) {
+		if (i == 0) {
 			myPerc.union(myTop, index);
 			myFull.union(myTop, index);
 		}
