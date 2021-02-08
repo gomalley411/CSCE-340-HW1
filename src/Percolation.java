@@ -1,9 +1,7 @@
 public class Percolation {
-<<<<<<< HEAD
 	// refer to textbook or to Prof. Wu 
 	// if help is needed, but do NOT copy
-=======
->>>>>>> 404eb1b8efc8421fd09e86affe653aacb9b32152
+
 	
 	private boolean[][] sites;
 	private int mySize;
@@ -34,7 +32,7 @@ public class Percolation {
 	 * @return
 	 */
 	private int getIndex(int i, int j) {
-		if (i < 1 || i > mySize || j < 1 || j > mySize) {
+		if (i < 0 || i > mySize || j < 0 || j > mySize) {
 			throw new IndexOutOfBoundsException();
 		}
 		return (i-1)*mySize + (j-1);
