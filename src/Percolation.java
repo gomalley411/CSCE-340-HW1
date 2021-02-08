@@ -1,5 +1,6 @@
 public class Percolation {
-
+	// refer to textbook or to Prof. Wu 
+	// if help is needed, but do NOT copy
 	
 	private boolean[][] sites;
 	private int mySize;
@@ -7,7 +8,7 @@ public class Percolation {
 	private WeightedQuickUnionUF myFull;
 	private int myTop, myBottom;
 	
-	public Percolation(int size) { // create size-by-size grid, with all sites blocked
+	public Percolation(int size) { // create size by size grid, with all sites blocked
 		if (size <= 0) throw new IllegalArgumentException();
 		sites = new boolean[size][size];
 		mySize = size;
@@ -73,7 +74,7 @@ public class Percolation {
 	 * @param j = column
 	 * @return
 	 */
-	public boolean isFull(int i, int j) {
+	public boolean isFull(int i, int j) { 
 		validate(i, j);
 		// a full site is an open site that can be connected to an open site in the top row via a chain of neighboring (left, right, up, down) sites
 		return myFull.connected(myTop, getIndex(i, j));
@@ -88,6 +89,12 @@ public class Percolation {
 		return myPerc.connected(myTop, myBottom);
 	}
 	
+	/** 
+	 * validates a pair of coordinates. I'm aware a function like this in QuickFindUF, but since I might decide
+	 * to change this function later I wanted to make a spare one here, just in case
+	 * @param i
+	 * @param j
+	 */
 	public void validate(int i, int j) {
 		if (i < 0 || i >= mySize) {
 			throw new IllegalArgumentException("open(): index " + i + " is not between 0 and " + (mySize-1));
