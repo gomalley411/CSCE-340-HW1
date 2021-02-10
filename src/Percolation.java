@@ -52,10 +52,10 @@ public class Percolation {
 		
 		// if opening top row, connect to virtual top
 		if (i == 0) {
-			myPerc.union(myTop, index);
-			myFull.union(myTop, index);
+			myPerc.union(myTop, index); // why is there an error here when opening a site on row 0?
+			myFull.union(myTop, index); // why is there an error here when opening a site on row 0?
 		}
-		if (i == mySize) myPerc.union(myBottom, index);
+		if (i == mySize) myPerc.union(myBottom, index); // might wanna check this one too after we fix the above error
 	}
 	
 	/**
