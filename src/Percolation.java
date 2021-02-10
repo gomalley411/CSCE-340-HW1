@@ -18,7 +18,7 @@ public class Percolation {
 		myPerc = new WeightedQuickUnionUF(mySize * mySize + 2);
 		myFull = myPerc;
 		myTop = mySize * mySize;
-		myBottom = myTop + size;
+		myBottom = myTop + mySize; //Rnote: I'm having a hard time understanding this logic
 		
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
@@ -34,11 +34,11 @@ public class Percolation {
 	 * @return
 	 */
 	private int getIndex(int i, int j) {
-		if (i < 1 || i > mySize || j < 1 || j > mySize) {
+		if (i < 0 || i >= mySize || j < 0 || j >= mySize) {
 			throw new IndexOutOfBoundsException();
 		}
-		return (i-1)*mySize + (j-1);
-	}
+		return i * mySize + j; //Rnote: this is really clever 
+	} 
 	
 	/**
 	 * open site (row i, column j) if it is not open already
@@ -53,7 +53,7 @@ public class Percolation {
 		int index = getIndex(i, j);
 		
 		// if opening top row, connect to virtual top
-		if (i == 1) {
+		if (i == 0) {
 			myPerc.union(myTop, index);
 			myFull.union(myTop, index);
 		}
@@ -67,7 +67,8 @@ public class Percolation {
 	 * @return
 	 */
 	public boolean isOpen(int i, int j) {
-		if (i < 0 || j < 0 || i >= mySize || j >= mySize) return false; // handles if array would go out of bounds
+		if (i < 0 || j < 0 || i >= mySize || j >= mySize) return false; // handles if array would go out of bounds 
+										//Rnote: why not an IndexOutOfBoundsException?
 		return sites[i][j];
 	}
 	
