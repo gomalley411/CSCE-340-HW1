@@ -112,7 +112,7 @@ public class Percolation {
 		for (int i = 0; i < mySize; i++) {
 			for (int j = 0; j < mySize; j++) {
 				if (sites[i][j]) System.out.print("O");
-				else System.out.print("B");
+				else System.out.print("X");
 				
 			}
 			System.out.print("\n");
