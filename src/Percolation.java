@@ -51,7 +51,7 @@ public class Percolation {
 		int index = getIndex(i, j);
 		
 		// if opening top row, connect to virtual top
-		if (i == 1) {
+		if (i == 0) {
 			myPerc.union(myTop, index);
 			myFull.union(myTop, index);
 		}
@@ -102,6 +102,20 @@ public class Percolation {
 		}
 		else if (j < 0 || j >= mySize) {
 			throw new IllegalArgumentException("open(): index " + j + " is not between 0 and " + (mySize-1));
+		}
+	}
+	
+	/**
+	 * prints out the contents of the percolation to determine visually which sites are open
+	 */
+	public void print() {
+		for (int i = 0; i < mySize; i++) {
+			for (int j = 0; j < mySize; j++) {
+				if (sites[i][j]) System.out.print("O");
+				else System.out.print("B");
+				
+			}
+			System.out.print("\n");
 		}
 	}
 }
