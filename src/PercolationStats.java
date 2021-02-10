@@ -31,6 +31,7 @@ public class PercolationStats {
 	 */
 	public double stddev() {
 		// write later
+		
 	}
 	
 	/**

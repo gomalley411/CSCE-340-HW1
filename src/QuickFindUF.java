@@ -35,10 +35,7 @@ public class QuickFindUF {
     
     // return true if the two elements are in the same set.
     public boolean connected(int p, int q) {
-        validate(p);
-        validate(q);
-        
-        return id[p] == id[q];
+        return find(p)==find(q);
     }
     
     // merge the set containing element p with the set containing element q.
