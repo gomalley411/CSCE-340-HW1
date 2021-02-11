@@ -13,7 +13,7 @@ public class Percolation {
 		sites = new boolean[size][size];
 		mySize = size;
 		myTop = size * size;
-		myBottom = myTop + size;
+		myBottom = myTop + 1;
 		myPerc = new WeightedQuickUnionUF(size * size + 2);
 		myFull = new WeightedQuickUnionUF(size * size + 2);
 		
@@ -120,8 +120,9 @@ public class Percolation {
 				else System.out.print("X");
 				
 			}
-			System.out.print("\n");
+			System.out.println();
 		}
+		System.out.println();
 	}
 }
 
