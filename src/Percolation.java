@@ -1,41 +1,41 @@
-public class Percolation {
-	// refer to textbook or to Prof. Wu 
-	// if help is needed, but do NOT copy
+//Rachel McMullan
+//George O'Malley 
 
+public class Percolation {
 	
 	private boolean[][] sites;
-	private int mySize;
+	private int mySize, myTop, myBottom;
 	private WeightedQuickUnionUF myPerc;
 	private WeightedQuickUnionUF myFull;
-	private int myTop, myBottom;
 	
 	public Percolation(int size) { // create size by size grid, with all sites blocked
 		if (size <= 0) throw new IllegalArgumentException();
 		sites = new boolean[size][size];
 		mySize = size;
-		myPerc = new WeightedQuickUnionUF(mySize * mySize + 2);
-		myFull = myPerc;
-		myTop = mySize * mySize;
+		myTop = size * size;
 		myBottom = myTop + size;
+		myPerc = new WeightedQuickUnionUF(size * size + 2);
+		myFull = new WeightedQuickUnionUF(size * size + 2);
 		
+		//initialize all sites as false, i.e. blocked
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
 				sites[i][j] = false;
 			}
 		}
-		
 	}
 	/**
-	 * returns the index of a given set of coordinates
+	 * returns the corresponding 1-D index of 2-D coordinates   
 	 * @param i
 	 * @param j
 	 * @return
 	 */
 	private int getIndex(int i, int j) {
-		if (i < 0 || i > mySize || j < 0 || j > mySize) {
-			throw new IndexOutOfBoundsException();
-		}
-		return (i-1)*mySize + (j-1);
+		if (i < 0 || i >= mySize) j < 0 || j >= mySize) 
+			throw new IndexOutOfBoundsException("index " + i + " is not between 0 and " + (mySize-1));
+		if(j < 0 || j > mySize)
+			throw new IndexOutOfBoundsException("index " + j + " is not between 0 and " + (mySize-1));
+		return i*mySize + j;
 	}
 	
 	/**
@@ -55,7 +55,9 @@ public class Percolation {
 			myPerc.union(myTop, index); // why is there an error here when opening a site on row 0?
 			myFull.union(myTop, index); // why is there an error here when opening a site on row 0?
 		}
-		if (i == mySize) myPerc.union(myBottom, index); // might wanna check this one too after we fix the above error
+		// if opening bottom row, connect to virtual bottom
+		if (i==mySize-1) 
+			myPerc.union(myBottom, index); // might wanna check this one too after we fix the above error
 	}
 	
 	/**
@@ -65,7 +67,10 @@ public class Percolation {
 	 * @return
 	 */
 	public boolean isOpen(int i, int j) {
-		if (i < 0 || j < 0 || i >= mySize || j >= mySize) return false; // handles if array would go out of bounds
+		if (i < 0 || i >= mySize) 
+			throw new IndexOutOfBoundsException(index " + i + " is not between 0 and " + (mySize-1));
+		if(j<0 || j>=mySize)
+			throw new IndexOutOfBoundsException(index " + j + " is not between 0 and " + (mySize-1));				    
 		return sites[i][j];
 	}
 	
@@ -98,10 +103,10 @@ public class Percolation {
 	 */
 	public void validate(int i, int j) {
 		if (i < 0 || i >= mySize) {
-			throw new IllegalArgumentException("open(): index " + i + " is not between 0 and " + (mySize-1));
+			throw new IllegalArgumentException("index " + i + " is not between 0 and " + (mySize-1));
 		}
 		else if (j < 0 || j >= mySize) {
-			throw new IllegalArgumentException("open(): index " + j + " is not between 0 and " + (mySize-1));
+			throw new IllegalArgumentException("index " + j + " is not between 0 and " + (mySize-1));
 		}
 	}
 	
