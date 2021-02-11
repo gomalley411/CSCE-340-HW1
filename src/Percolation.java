@@ -68,9 +68,9 @@ public class Percolation {
 	 */
 	public boolean isOpen(int i, int j) {
 		if (i < 0 || i >= mySize) 
-			throw new IndexOutOfBoundsException(index " + i + " is not between 0 and " + (mySize-1));
+			throw new IndexOutOfBoundsException("index " + i + " is not between 0 and " + (mySize-1));
 		if(j<0 || j>=mySize)
-			throw new IndexOutOfBoundsException(index " + j + " is not between 0 and " + (mySize-1));				    
+			throw new IndexOutOfBoundsException("index " + j + " is not between 0 and " + (mySize-1));				    
 		return sites[i][j];
 	}
 	
