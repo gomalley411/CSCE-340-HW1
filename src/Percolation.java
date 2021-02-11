@@ -125,5 +125,3 @@ public class Percolation {
 		System.out.println();
 	}
 }
-
-	
