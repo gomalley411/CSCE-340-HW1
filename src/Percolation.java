@@ -31,7 +31,7 @@ public class Percolation {
 	 * @return
 	 */
 	private int getIndex(int i, int j) {
-		if (i < 0 || i >= mySize) j < 0 || j >= mySize) 
+		if (i < 0 || i >= mySize)
 			throw new IndexOutOfBoundsException("index " + i + " is not between 0 and " + (mySize-1));
 		if(j < 0 || j > mySize)
 			throw new IndexOutOfBoundsException("index " + j + " is not between 0 and " + (mySize-1));
