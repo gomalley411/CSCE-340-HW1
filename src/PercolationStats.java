@@ -8,7 +8,7 @@ public class PercolationStats {
     
     private int size, trials;   //grid dimensions and number of experiments
     private double[] thresholds;//percolation thresholds for each trial
-    private Random random;
+    private Random random=new Random();
     private Percolation grid;   //current system
     
     //perform T independent experiments on an N-by-N grid
@@ -37,10 +37,10 @@ public class PercolationStats {
             //loop repeats until system percolates
             while(!grid.percolates()){
                 
-                System.out.println(count);
+                //System.out.println(count);
                 
                 //open a site at a random index
-                getOpen(random.nextInt(size), random.nextInt(size));
+                getOpen();
                     
                 count++; //update number of open sites
             }
@@ -51,18 +51,18 @@ public class PercolationStats {
     }
     
     //open a blocked site at a random index
-    private boolean getOpen(int i, int j){
+    private void getOpen(){
         
-        //base case: site is blocked
-        if(!grid.isOpen(i, j)){
-            grid.open(i, j);
-            System.out.println(i+" "+j);
-            return true;
+        int i=random.nextInt(size);
+        int j=random.nextInt(size);
+        
+        //continue to generate random indices until a blocked site is found
+        while(grid.isOpen(i, j)){
+            i=random.nextInt(size);
+            j=random.nextInt(size);
         }
-        //recursive case: site at index is open, generate another index
-        else{
-            return getOpen(random.nextInt(size), random.nextInt(size));   
-        }
+        //open the blocked site
+        grid.open(i, j); 
     }
     
     //sample mean of percolation threshold
