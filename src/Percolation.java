@@ -47,10 +47,11 @@ public class Percolation {
 		if (!sites[i][j]) 
 			sites[i][j] = true; // sites[i][j] is now open
 		
-                //check up
-                //check down
-                //check right
-                //checkleft
+                //check up: see if (i-1, j) is open
+                //check down: see if (i+1, j) is open
+                //check left: see if  (i, j-1) is open 
+                //check right: see if (i, j+1) is open 
+                //(if valid indices) 
                 
 		int index = getIndex(i, j);
 		
