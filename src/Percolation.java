@@ -46,14 +46,22 @@ public class Percolation {
 		validate(i, j);
 		if (!sites[i][j]) 
 			sites[i][j] = true; // sites[i][j] is now open
-		
-                //check up: see if (i-1, j) is open
-                //check down: see if (i+1, j) is open
-                //check left: see if  (i, j-1) is open 
-                //check right: see if (i, j+1) is open 
-                //(if valid indices) 
-                
 		int index = getIndex(i, j);
+                
+                //see if there are any adjacent open sites and connect
+                if(i>0 && sites[i-1][j])
+                    myPerc.union(index, getIndex(i-1,j));
+                //check down: see if (i+1, j) is open
+                if(i<mySize-1 && sites[i+1][j])
+                    myPerc.union(index, getIndex(i+1, j));
+                //check left: see if  (i, j-1) is open 
+                if(j>0 && sites[1][j-1])
+                    myPerc.union(index, getIndex(i, j-1));
+                //check right: see if (i, j+1) is open 
+                if(j<mySize-1 && sites[i][j+1])
+                    myPerc.union(index, getIndex(i, j+1));
+                //(if valid indices) 
+
 		
                 
                 
@@ -132,5 +140,3 @@ public class Percolation {
 		System.out.println();
 	}
 }
-
-	
