@@ -148,16 +148,4 @@ public class Percolation {
 		}
 		System.out.println();
 	}
-	
-	/**
-	 * opens random sites
-	 */
-	public void randomize() {
-		Random r = new Random();
-		while (!percolates()) {
-			int randRow = r.nextInt(mySize);
-			int randCol = r.nextInt(mySize);
-			open(randRow, randCol);
-		}
-	}
 }
