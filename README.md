@@ -26,11 +26,11 @@ Programming Assignment 1: Percolation
  *  whether the system percolates?
  *****************************************************************************/
 
-I interpret this question to mean, what method did I use to check whether a system
-percolates or not. In my percolates() method I simply returned myPerc.connected(myTop, myBottom)
-where myTop and myBottom are the virtual top and bottom respectively.
-I'm not great with words, but I hope that explains it well enough for you. Let me know
-if you have any questions.
+We used a two-dimensional boolean array sites[][] to represent the system, where every open site is true and every blocked site is false.
+To keep track of which open sites were connected, we used a WeightedQuickUnionUF object myPerc, whose operations are performed on one-dimensional arrays. 
+The getIndex() method accepted the coordinates of a site in the system and returned their one-dimensional equivalent to be processed by myPerc's methods.
+The parent[] and size[] fields in myPerc were created with 2 additional elements representing "myTop" and "myBottom," the indices of the "virtual top" of the system and its "virtual bottom," respectively.  All sites in the top row were connected to myTop and all the sites in the bottom row were connected to myBottom, therefore the two variables made it easy to work with the only relevant connected components. 
+As we know, a system percolates when there is a site in the bottom row that is full, i.e. connected to the top row, so we used a boolean percolates() method which checked to see if myTop and myBottom were connected.  If it returned "true," then the system percolated, otherwise the return value would be "false." 
 
 
 /******************************************************************************
