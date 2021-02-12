@@ -1,11 +1,14 @@
 //Rachel McMullan
 //George O'Malley 
 
+import java.util.Random;
+
 public class Percolation {
 	
 	private boolean[][] sites;
 	private int mySize, myTop, myBottom;
 	private WeightedQuickUnionUF myPerc;
+	private int numSites, numOpen, numFull;
 	
 	public Percolation(int size) { // create size by size grid, with all sites blocked
 		if (size <= 0) throw new IllegalArgumentException();
@@ -14,6 +17,9 @@ public class Percolation {
 		myTop = size * size;
 		myBottom = myTop + 1;
 		myPerc = new WeightedQuickUnionUF(size * size + 2);
+		numSites = size * size;
+		numOpen = 0;
+		numFull = 0;
 		
 		//initialize all sites as false, i.e. blocked
 		for (int i = 0; i < size; i++) {
@@ -21,6 +27,8 @@ public class Percolation {
 				sites[i][j] = false;
 			}
 		}
+		
+		randomize();
 	}
 	/**
 	 * returns the corresponding 1-D index of 2-D coordinates   
@@ -44,8 +52,10 @@ public class Percolation {
 	 */
 	public void open (int i, int j) {
 		validate(i, j);
-		if (!sites[i][j]) 
+		if (!sites[i][j]) {
 			sites[i][j] = true; // sites[i][j] is now open
+			numOpen++;
+		}
 		int index = getIndex(i, j);
                 
                 //see if there are any adjacent open sites and connect
@@ -61,9 +71,6 @@ public class Percolation {
                 if(j<mySize-1 && sites[i][j+1])
                     myPerc.union(index, getIndex(i, j+1));
                 //(if valid indices) 
-
-		
-                
                 
 		// if opening top row, connect to virtual top
 		if (i == 0) {
@@ -98,7 +105,9 @@ public class Percolation {
 	public boolean isFull(int i, int j) { 
 		validate(i, j);
 		// a full site is an open site that can be connected to an open site in the top row via a chain of neighboring (left, right, up, down) sites
-		return myPerc.connected(myTop, getIndex(i, j));
+		boolean myBool = myPerc.connected(myTop, getIndex(i, j));
+		if (myBool) numFull++;
+		return myBool;
 	}
 	
 	/**
@@ -133,10 +142,22 @@ public class Percolation {
 		for (int i = 0; i < mySize; i++) {
 			for (int j = 0; j < mySize; j++) {
 				if (sites[i][j]) System.out.print("O");
-				else System.out.print("X");	
+				else System.out.print("B");	
 			}
 			System.out.println();
 		}
 		System.out.println();
+	}
+	
+	/**
+	 * opens random sites
+	 */
+	public void randomize() {
+		Random r = new Random();
+		while (!percolates()) {
+			int randRow = r.nextInt(mySize);
+			int randCol = r.nextInt(mySize);
+			open(randRow, randCol);
+		}
 	}
 }
