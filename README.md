@@ -145,7 +145,7 @@ running time (in seconds) as a function of n and T:  ~
  *  include any help from people (including
  *  classmates and friends) and attribute them by name.
  *****************************************************************************/
-- other than my partner, not much
+- got help from my partner and from meeting with you on Zoom
 
 /******************************************************************************
  *  Describe any serious problems you encountered.                    
