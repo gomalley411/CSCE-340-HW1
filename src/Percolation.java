@@ -6,7 +6,6 @@ public class Percolation {
 	private boolean[][] sites;
 	private int mySize, myTop, myBottom;
 	private WeightedQuickUnionUF myPerc;
-	private WeightedQuickUnionUF myFull;
 	
 	public Percolation(int size) { // create size by size grid, with all sites blocked
 		if (size <= 0) throw new IllegalArgumentException();
@@ -15,7 +14,6 @@ public class Percolation {
 		myTop = size * size;
 		myBottom = myTop + 1;
 		myPerc = new WeightedQuickUnionUF(size * size + 2);
-		myFull = new WeightedQuickUnionUF(size * size + 2);
 		
 		//initialize all sites as false, i.e. blocked
 		for (int i = 0; i < size; i++) {
@@ -31,7 +29,7 @@ public class Percolation {
 	 * @return
 	 */
 	private int getIndex(int i, int j) {
-		if (i < 0 || i >= mySize)
+		if(i < 0 || i >= mySize)
 			throw new IndexOutOfBoundsException("index " + i + " is not between 0 and " + (mySize-1));
 		if(j < 0 || j > mySize)
 			throw new IndexOutOfBoundsException("index " + j + " is not between 0 and " + (mySize-1));
@@ -52,8 +50,7 @@ public class Percolation {
 		
 		// if opening top row, connect to virtual top
 		if (i == 0) {
-			myPerc.union(myTop, index); // why is there an error here when opening a site on row 0?
-			myFull.union(myTop, index); // why is there an error here when opening a site on row 0?
+			myPerc.union(myTop, index);
 		}
 		// if opening bottom row, connect to virtual bottom
 		if (i==mySize-1) 
@@ -70,7 +67,8 @@ public class Percolation {
 		if (i < 0 || i >= mySize) 
 			throw new IndexOutOfBoundsException("index " + i + " is not between 0 and " + (mySize-1));
 		if(j<0 || j>=mySize)
-			throw new IndexOutOfBoundsException("index " + j + " is not between 0 and " + (mySize-1));				    
+			throw new IndexOutOfBoundsException("index " + j + " is not between 0 and " + (mySize-1));
+                
 		return sites[i][j];
 	}
 	
@@ -83,7 +81,7 @@ public class Percolation {
 	public boolean isFull(int i, int j) { 
 		validate(i, j);
 		// a full site is an open site that can be connected to an open site in the top row via a chain of neighboring (left, right, up, down) sites
-		return myFull.connected(myTop, getIndex(i, j));
+		return myPerc.connected(myTop, getIndex(i, j));
 	}
 	
 	/**
@@ -125,3 +123,5 @@ public class Percolation {
 		System.out.println();
 	}
 }
+
+	
