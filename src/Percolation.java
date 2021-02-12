@@ -28,6 +28,7 @@ public class Percolation {
 	 * @param j
 	 * @return
 	 */
+        
 	private int getIndex(int i, int j) {
 		if(i < 0 || i >= mySize)
 			throw new IndexOutOfBoundsException("index " + i + " is not between 0 and " + (mySize-1));
@@ -46,15 +47,22 @@ public class Percolation {
 		if (!sites[i][j]) 
 			sites[i][j] = true; // sites[i][j] is now open
 		
+                //check up
+                //check down
+                //check right
+                //checkleft
+                
 		int index = getIndex(i, j);
 		
+                
+                
 		// if opening top row, connect to virtual top
 		if (i == 0) {
 			myPerc.union(myTop, index);
 		}
 		// if opening bottom row, connect to virtual bottom
 		if (i==mySize-1) 
-			myPerc.union(myBottom, index); // might wanna check this one too after we fix the above error
+			myPerc.union(myBottom, index); 
 	}
 	
 	/**
@@ -89,7 +97,8 @@ public class Percolation {
 	 * @return
 	 */
 	public boolean percolates() {
-		// see explanation in assignment pdf file to know what percolation means
+		// the system percolates if the bottom row has a full site, i.e. a site that connects to the first row. 
+                
 		return myPerc.connected(myTop, myBottom);
 	}
 	
@@ -115,8 +124,7 @@ public class Percolation {
 		for (int i = 0; i < mySize; i++) {
 			for (int j = 0; j < mySize; j++) {
 				if (sites[i][j]) System.out.print("O");
-				else System.out.print("X");
-				
+				else System.out.print("X");	
 			}
 			System.out.println();
 		}
