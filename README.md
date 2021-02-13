@@ -76,7 +76,7 @@ As we know, a system percolates when there is a site in the bottom row that is f
  *
  *****************************************************************************/
 
-running time (in seconds) as a function of n and T:  ~ 
+running time (in seconds) as a function of n and T:  ~ 8.7*10^(-8) * n^3.7 * T 
 
 
 /******************************************************************************
@@ -107,7 +107,7 @@ running time (in seconds) as a function of n and T:  ~
 100000		58.163
 
 
-running time (in seconds) as a function of n and T:  ~ 
+running time (in seconds) as a function of n and T:  ~ 1.4*10^(-7) * n^2.17 * T^0.1
 
 
 /**********************************************************************
@@ -136,13 +136,13 @@ n^2 bytes for sites[][], since M and N are both n
 so n^2+12+4n+68 bytes
 = n^2+4n+80 bytes
 
-Tilde notation: ~2n (???)
+Tilde notation: ~2n
  
 /******************************************************************************
  *  Known bugs / limitations.
  *****************************************************************************/
 
-
+None that we know 
 
 
 /******************************************************************************
