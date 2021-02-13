@@ -119,17 +119,24 @@ running time (in seconds) as a function of n and T:  ~
  *
  *  Include the memory for all referenced objects (deep memory).
  **********************************************************************/
+WeightedQuickUnionUF uses:
+(2n+24)*2 bytes, for parent[] and size[]
++ 4 bytes for the count, which is an int
++ 16 bytes for object overhead
++ up to 7 bytes for padding
+so 4n+68 bytes
 
+Percolation uses:
+n^2 bytes for sites[][], since M and N are both n
++ 4 bytes each for mySize, myTop, and myBottom, which are ints
++ 4n+68 bytes for myPerc, which is a WeightedQuickUnionUF
++ object overhead - 16 bytes
++ up to 7 bytes for padding
 
+so n^2+12+4n+68 bytes
+= n^2+4n+80 bytes
 
-
-
-
-
-
-
-
-
+Tilde notation: ~2n (???)
  
 /******************************************************************************
  *  Known bugs / limitations.
