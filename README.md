@@ -158,5 +158,5 @@ running time (in seconds) as a function of n and T:  ~
  *  on how much you learned from doing the assignment, and whether    
  *  you enjoyed doing it.                                             
  *****************************************************************************/
-
+I learned that it's always best to have people look over your work to see if there's any errors you might have missed
 v
