@@ -42,28 +42,26 @@ As we know, a system percolates when there is a site in the bottom row that is f
  *  4 data points, ranging in time from around 0.1 seconds to around
  *  60 seconds. Do not include data points that takes less than 0.1 seconds.
  *****************************************************************************/
-
-(keep T constant)
+(keep T constant) T=100
 
  n          time (seconds)
 ------------------------------
-...
-...
-...
-...
-...
+50		0.153
+100		1.954
+200		27.95
+250		64.651
 
 
-(keep n constant)
+(keep n constant) n=100
 
  T          time (seconds)
 ------------------------------
-...
-...
-...
-...
-...
-
+5		   0.109
+500	 	0.966
+1000		18.55		
+2000		35.578
+3000		52.555
+3500		64.62
 
 /******************************************************************************
  *  Using the empirical data from the above two tables, give a formula 
@@ -86,26 +84,27 @@ running time (in seconds) as a function of n and T:  ~
  *  (instead of QuickFindUF).
  *****************************************************************************/
 
-(keep T constant)
+(keep T constant) T=100
 
  n         time (seconds)
 ------------------------------
-...
-...
-...
-...
-...
+100		0.109
+500		2.1
+1000		13.254
+1500		38.746
+2000		81.031
 
 
-(keep n constant)
+(keep n constant) n=100
 
  T          time (seconds)
 ------------------------------
-...
-...
-...
-...
-...
+100		0.114
+1000		0.689
+2000		1.301
+5000		3.123
+10000		6.165
+100000		58.163
 
 
 running time (in seconds) as a function of n and T:  ~ 
