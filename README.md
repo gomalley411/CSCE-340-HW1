@@ -8,9 +8,9 @@
  *  Partner NetID:   N/A
  *  Partner Precept: N/A
  * 
- *  Operating system: Windows (George)
- *  Compiler: Eclipse (George)
- *  Text editor / IDE:  Eclipse (George)
+ *  Operating system: macOS
+ *  Compiler: NetBeans
+ *  Text editor / IDE:  NetBeans
  *
  *  Have you taken (part of) this course before:
  *  no
